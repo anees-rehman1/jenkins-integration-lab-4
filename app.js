@@ -1,13 +1,14 @@
 const http = require('http');
 
+const hostname = '127.0.0.1';
+const port = 3000;
+
 const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('<h1>Hello from Modern Jenkins Pipeline (2024)!</h1>');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World from Jenkins Integration Demo!\n');
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-module.exports = server;
